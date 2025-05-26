@@ -17,19 +17,12 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     @Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder() {
-
-        return new BCryptPasswordEncoder();
-    }
-
-    @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         http
                 .csrf((auth) -> auth.disable());
 
-        http
-                .authorizeHttpRequests((auth) -> auth.anyRequest().authenticated());
+        http.authorizeHttpRequests(auth -> auth.anyRequest().permitAll());
 
         http
                 .httpBasic(Customizer.withDefaults());
@@ -38,16 +31,4 @@ public class SecurityConfig {
         return http.build();
     }
 
-    @Bean
-    public UserDetailsService userDetailsService() {
-
-        UserDetails user1 = User.builder()
-                .username("admin")
-                .password(bCryptPasswordEncoder().encode("1234"))
-                .roles("ADMIN")
-                .build();
-
-
-        return new InMemoryUserDetailsManager(user1);
-    }
 }

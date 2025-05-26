@@ -26,28 +26,10 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         http
-                .csrf((auth) -> auth.disable());
-
-        http
-                .authorizeHttpRequests((auth) -> auth.anyRequest().authenticated());
-
-        http
-                .httpBasic(Customizer.withDefaults());
-
+                .csrf(csrf -> csrf.disable())               // CSRF 꺼둠
+                .authorizeHttpRequests(auth -> auth.anyRequest().permitAll()); // ★
 
         return http.build();
     }
 
-    @Bean
-    public UserDetailsService userDetailsService() {
-
-        UserDetails user1 = User.builder()
-                .username("admin")
-                .password(bCryptPasswordEncoder().encode("1234"))
-                .roles("ADMIN")
-                .build();
-
-
-        return new InMemoryUserDetailsManager(user1);
-    }
 }
