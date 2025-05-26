@@ -10,6 +10,6 @@ public class Ms1Controller {
 
     @GetMapping("/test")
     public String test() {
-        return "ms1 hello";
+        return "ms1 hello(upgrade)";
     }
 }

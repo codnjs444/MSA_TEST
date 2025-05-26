@@ -10,6 +10,6 @@ public class Ms2Controller {
 
     @GetMapping("/test")
     public String test() {
-        return "ms2 hello";
+        return "ms2 hello upgrade";
     }
 }
