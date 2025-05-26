@@ -1,0 +1,91 @@
+version: "3.8"
+
+services:
+  uereka-server:
+    image: uereka-server:0.1          # 없으면 build 해서 만듦
+    build: ./uerekaServer            # ← Dockerfile 있는 폴더
+    container_name: uereka-server
+    ports:
+      - "8761:8761"
+    networks: [ msa-net ]
+
+  config-server:
+    image: config-server:0.1
+    build: ./ConfigServer
+    container_name: config-server
+    depends_on:
+      - uereka-server                # Eureka 먼저 올라오도록
+    environment:
+      - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://uereka-server:8761/eureka
+    ports:
+      - "9000:9000"
+    networks: [ msa-net ]
+
+  gateway-server:
+    image: gateway-server:0.1
+    build: ./SpringGateway
+    container_name: gateway-server
+    depends_on:
+      - uereka-server
+      - config-server
+    environment:
+      - SPRING_CONFIG_IMPORT=optional:configserver:http://config-server:9000/
+      - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://uereka-server:8761/eureka
+    ports:
+      - "8080:8080"
+    networks: [ msa-net ]
+
+  ms1:
+    image: ms1:0.1
+    build: ./ms1
+    container_name: ms1
+    depends_on:
+      - uereka-server
+      - config-server
+    environment:
+      - SPRING_CONFIG_IMPORT=optional:configserver:http://config-server:9000/
+      - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://uereka-server:8761/eureka
+    ports:
+      - "8081:8081"
+    networks: [ msa-net ]
+
+  ms2:
+    image: ms2:0.1
+    build: ./ms2
+    container_name: ms2
+    depends_on:
+      - uereka-server
+      - config-server
+    environment:
+      - SPRING_CONFIG_IMPORT=optional:configserver:http://config-server:9000/
+      - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://uereka-server:8761/eureka
+    ports:
+      - "8082:8082"
+    networks: [ msa-net ]
+
+  db:
+    image: postgres:16-alpine
+    restart: always
+    environment:
+      POSTGRES_DB: app
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: app123
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks: [msa-net]
+
+  redis:
+    image: redis:7-alpine
+    restart: always
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redisdata:/data
+    networks: [msa-net]
+
+volumes:
+  pgdata:
+  redisdata:
+
+networks:
+  msa-net:
+    driver: bridge
