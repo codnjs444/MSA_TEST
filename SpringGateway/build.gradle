@@ -22,10 +22,61 @@ ext {
 	set('springCloudVersion', "2025.0.0-RC1")
 }
 
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+	all {
+		exclude group: 'ch.qos.logback', module: 'logback-classic'
+		exclude group: 'org.apache.logging.log4j', module: 'log4j-to-slf4j'
+		exclude group: 'org.slf4j', module: 'jul-to-slf4j'
+	}
+}
+
 dependencies {
+
+	// Spring Boot WebFlux
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+
+	// Spring Boot Security
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+
+	// Actuator
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
+	// Spring Cloud Gateway
 	implementation 'org.springframework.cloud:spring-cloud-starter-gateway'
+
+	// Spring Cloud Eureka
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+
+	// JSON
+	implementation 'org.json:json:20240303'
+	implementation 'com.fasterxml.jackson.core:jackson-databind'
+
+	// AOP
+	implementation 'org.springframework.boot:spring-boot-starter-aop'
+
+	// JPA (JDBC 포함)
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	// JWT
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
+
+	// PostgreSQL
+	implementation 'org.postgresql:postgresql:42.7.2'
+
+	// UUID v7
+	implementation 'com.github.f4b6a3:uuid-creator:5.3.2'
+
+	// Lombok
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	// Log
+	implementation 'org.springframework.boot:spring-boot-starter-log4j2'
+
+	// Test
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }

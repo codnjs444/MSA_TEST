@@ -1,0 +1,63 @@
+spring:
+  application:
+    name: SpringGateway
+
+  config:
+    activate:
+      on-profile: dev
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: 1111
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        use_sql_comments: false
+    show-sql: false
+    format-sql: true
+    hibernate:
+      ddl-auto: none
+
+  cloud:
+    gateway:
+      routes:
+        - id: ms1
+          uri: lb://MS1
+          predicates:
+            - Path=/ms1/**
+        - id: ms2
+          uri: lb://MS2
+          predicates:
+            - Path=/ms2/**
+
+#server:
+#  port: 8080
+
+logging:
+  level:
+    org.hibernate.SQL: OFF
+    org.hibernate.type.descriptor.sql.BasicBinder: OFF
+    org.springframework.cloud.gateway: DEBUG
+    p6spy: DEBUG
+    p6spy.spy: OFF
+
+management:
+  endpoint:
+    gateway:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: gateway
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://uereka-server:8761/eureka

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE xml>
+
+<Configuration>
+	<!-- log4j2 자체 로깅 레벨 설정 -->
+    <status>INFO</status>
+    
+    <Properties>
+    	<!-- 로그 경로 및 프로젝트 이름 지정 -->
+        <Property name="log.path" value="../../gateway/log" />
+        <Property name="project.name" value="i-gateway-server" />
+        
+        <!-- 로그레벨 설정 -->
+        <Property name="log.level.console" value="INFO" /><!-- 콘솔에 출력할 로그 레벨 -->
+        <Property name="log.level.project" value="INFO" /><!-- 디버깅용(사용자정의) 로그레벨, 콘솔에서 확인시에는 log.level.console에서 정의된 레벨 이상만 확인할 수 있음 -->
+        <Property name="log.level.query" value="WARN" /><!-- 쿼리로그레별 적용:INFO, 미적용:OFF -->
+    </Properties>
+    
+    <Appenders> 
+		<!-- 콘솔 출력용 Appender -->
+        <Console name="Console_Appender" target="SYSTEM_OUT">
+            <ThresholdFilter>
+                <level>${log.level.console}</level>
+                <onMatch>ACCEPT</onMatch>
+                <onMismatch>DENY</onMismatch>
+            </ThresholdFilter>
+            <PatternLayout>
+                <disableAnsi>false</disableAnsi>
+                <pattern>%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd HH:mm:ss.SSS}} %highlight{${LOG_LEVEL_PATTERN:-%5p}}{FATAL=red blink, ERROR=red, WARN=yellow bold, INFO=green, DEBUG=green bold, TRACE=blue} %style{${sys:PID}}{magenta} [%15.15t] %style{%-40.40C{1.}}{cyan} : %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}</pattern>
+            </PatternLayout>
+        </Console>
+        
+        <!-- ERROR 및 WARN 로그를 저장하는 파일 Appender -->
+        <File name="Error_Appender">
+            <fileName>${log.path}/${project.name}-error.log</fileName>
+            <PatternLayout>
+                <pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t][%F] %c{1} - %msg%n</pattern>
+            </PatternLayout>
+            <LevelRangeFilter>
+                <minLevel>ERROR</minLevel>
+                <maxLevel>WARN</maxLevel>
+                <onMatch>ACCEPT</onMatch>
+                <onMismatch>DENY</onMismatch>
+            </LevelRangeFilter>
+        </File>
+        
+        <!-- 전체 로그를 저장하고 용량 및 시간 기준으로 Rolling 처리하는 Appender -->
+        <RollingFile name="Rolling_Appender">
+            <ignoreExceptions>false</ignoreExceptions>
+            <fileName>${log.path}/${project.name}-rolling.log</fileName>
+            <filePattern>${log.path}/archive/rolling/${date:yyyy-MM-dd}/${project.name}-rolling-%d{yyyy-MM-dd}-%i.gz</filePattern>
+            <PatternLayout>
+                <pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t][%F] %c{1} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+            	<!-- 시간설정(60초마다 rolling) -->
+                <TimeBasedTriggeringPolicy>
+                    <interval>60</interval>
+                    <modulate>true</modulate>
+                </TimeBasedTriggeringPolicy>
+                <!-- 최대용량설정 (1MB) -->
+                <SizeBasedTriggeringPolicy>
+                    <size>1 MB</size>
+                </SizeBasedTriggeringPolicy>
+            </Policies>
+            <DefaultRolloverStrategy>
+                <max>10</max>
+            </DefaultRolloverStrategy>
+        </RollingFile>
+        
+        <!-- 쿼리 로그만 별도 저장하는 Appender -->
+        <RollingFile name="Query_Appender">
+            <ignoreExceptions>false</ignoreExceptions>
+            <fileName>${log.path}/${project.name}-query.log</fileName>
+            <filePattern>${log.path}/archive/query/${date:yyyy-MM-dd}/${project.name}-query-%d{yyyy-MM-dd}-%i.gz</filePattern>
+            <PatternLayout>
+                <pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t][%F] %c{1} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy>
+                    <interval>1</interval>
+                    <modulate>true</modulate>
+                </TimeBasedTriggeringPolicy>
+                <SizeBasedTriggeringPolicy>
+                    <size>1 MB</size>
+                </SizeBasedTriggeringPolicy>
+            </Policies>
+            <DefaultRolloverStrategy>
+                <max>10</max>
+            </DefaultRolloverStrategy>
+        </RollingFile>
+    </Appenders>
+    
+    <Loggers>
+    	<!-- 최상위 logger, class 에서 로그를 출력하는데 사용된 logger가 log4j.xml 에 존재하지 않는다면, 부모 로거를 찾음 @Log4j2 어노테이션으로 사용하는 경우 root 로거가 적용됨 -->
+        <Root>
+            <level>${log.level.project}</level>
+            <AppenderRef ref="Console_Appender"/>
+            <AppenderRef ref="Rolling_Appender"/>
+            <AppenderRef ref="Error_Appender"/>
+        </Root>
+        <!-- 디버깅용 logger 정의, 추가로 정의할 수 있음, 프로젝트 내에 로그는 com.project 객체 사용 -->
+        <Logger>
+            <name>com.project</name>
+            <additivity>false</additivity><!-- 중복로깅여부 -->
+            <level>${log.level.project}</level>
+            <AppenderRef ref="Console_Appender"/>
+            <AppenderRef ref="Rolling_Appender"/>
+            <AppenderRef ref="Error_Appender"/>
+        </Logger>
+        
+        <!-- Hibernate DB 연결 시 출력되는 환경 로그 제거 -->
+        <Logger name="org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator" level="WARN" additivity="false">
+		    <AppenderRef ref="Console_Appender"/>
+		    <AppenderRef ref="Rolling_Appender"/>
+		</Logger>
+		
+		<Logger name="org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentImpl" level="WARN" additivity="false">
+		    <AppenderRef ref="Console_Appender"/>
+		    <AppenderRef ref="Rolling_Appender"/>
+		</Logger>
+		
+		<Logger name="org.hibernate" level="WARN" additivity="false">
+		    <AppenderRef ref="Console_Appender"/>
+		    <AppenderRef ref="Rolling_Appender"/>
+		</Logger>
+    </Loggers>
+    
+</Configuration>
