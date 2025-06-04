@@ -23,6 +23,11 @@ spring:
     hibernate:
       ddl-auto: none
 
+  data:
+    redis:
+      host: localhost      # 또는 Redis 서버 주소
+      port: 6379           # 기본 Redis 포트
+
   cloud:
     gateway:
       routes:
@@ -34,6 +39,10 @@ spring:
           uri: lb://MS2
           predicates:
             - Path=/ms2/**
+
+jwt:
+  refresh:
+    header: Authorization-refresh
 
 #server:
 #  port: 8080

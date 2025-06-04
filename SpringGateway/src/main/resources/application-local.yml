@@ -21,8 +21,23 @@ spring:
     show-sql: false
     format-sql: true
     hibernate:
-      ddl-auto: none
+      ddl-auto: create
+  # [스프링 부트 메시지 관련 설정]
+  messages:
+    basename: message/messages
+    encoding: UTF-8
 
+  data:
+    redis:
+      host: localhost      # 또는 Redis 서버 주소
+      port: 6379           # 기본 Redis 포트
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8088/realms/test_realm
+          jwk-set-uri: http://localhost:8088/realms/test_realm/protocol/openid-connect/certs
   cloud:
     gateway:
       routes:
@@ -34,6 +49,24 @@ spring:
           uri: lb://MS2
           predicates:
             - Path=/ms2/**
+        - id: userService
+          uri: lb://USERSERVICE
+          predicates:
+            - Path=/user/**
+
+
+jwt:
+  secretKey: WQJEQIEQWIEJQWID21312JMDKWQI99381DJWI1930D
+  access:
+    header: Authorization
+  refresh:
+    header: Authorization-refresh
+
+keycloak:
+  server:
+    url: http://localhost:8088
+    realm: test_realm
+    client-id: test_portal
 
 server:
   port: 8080

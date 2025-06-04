@@ -1,0 +1,56 @@
+#exception
+eException:
+  code: "9999"
+  msg: "Exception"
+eIOException:
+  code: "9999"
+  msg: "IOException"
+eServiceNotFound:
+  code: "45000"
+  msg: "요청을 처리할 서비스를 찾을 수 없습니다. 잠시 후 다시 시도해주세요"
+
+#auth
+logout:
+  code: "0000"
+  msg: "로그아웃"
+accessDenied:
+  code: "273380"
+  msg: "액세스가 거부되었습니다 (권한 없음)"
+unauthorized:
+  code: "273380"
+  msg: "액세스가 거부되었습니다 (인증 필요)"
+eUnauthorizedAccess:
+  code: "274001"
+  msg: "접근 권한이 없습니다 (관리자에 문의하세요)"
+
+#token
+TokenReIssueSuccess:
+  code: "0000"
+  msg: "토큰 재발급 성공"
+eTokenReIssue:
+  code: "109000"
+  msg: "토큰 만료 (토큰 재발급 요청 요구)"
+eAccessTokenExpired:
+  code: "109515"
+  msg: "토큰 유효 기간이 만료되었습니다"
+eTokenExpired:
+  code: "109516"
+  msg: "토큰 유효 기간이 만료되었습니다"
+eTokenVaildation:
+  code: "109517"
+  msg: "유효하지 않은 토큰입니다"
+eJWTVerification:
+  code: "109518"
+  msg: "토큰 인증에 실패했습니다"
+eRefreshForgery:
+  code: "109519"
+  msg: "토큰 인증에 실패했습니다 (RT 위조)"
+eRefreshNotFound:
+  code: "109520"
+  msg: "토큰 인증에 실패했습니다 (RT 만료 - 재로그인)"
+eTokenReuseDetected:
+  code: "109521"
+  msg: "토큰 인증에 실패했습니다 (재사용 방지)"
+eTokenNotUse:
+  code: "11000"
+  msg: "토큰 사용이 중지되었습니다"

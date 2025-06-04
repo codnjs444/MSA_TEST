@@ -1,0 +1,24 @@
+#exception
+eException:
+  code: "9999"
+  msg: "Exception"
+eIOException:
+  code: "9999"
+  msg: "IOException"
+
+#auth
+accessDenied:
+  code: "273380"
+  msg: "Access denied (No Permission)"
+unauthorized:
+  code: "273380"
+  msg: "Access denied (Authentication Required)"
+
+#token   
+eTokenExpired:
+  code: "109516"
+  msg: "Token validity has expired"
+eJWTVerification:
+  code: "109517"
+  msg: "JWT validation Error"
+  

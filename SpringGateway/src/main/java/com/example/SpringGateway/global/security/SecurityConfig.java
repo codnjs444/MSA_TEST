@@ -1,8 +1,5 @@
 package com.example.SpringGateway.global.security;
 
-import com.example.SpringGateway.global.security.matcher.MatcherRequestManager;
-import com.example.SpringGateway.global.security.point.CustomAccessDeniedHandler;
-import com.example.SpringGateway.global.security.point.CustomAuthenticationEntryPoint;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,6 +11,10 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 import org.springframework.security.web.server.context.NoOpServerSecurityContextRepository;
 import org.springframework.web.cors.reactive.CorsConfigurationSource;
 
+import com.example.SpringGateway.global.redis.service.RedisRefreshTokenService;
+import com.example.SpringGateway.global.security.matcher.MatcherRequestManager;
+import com.example.SpringGateway.global.security.point.CustomAccessDeniedHandler;
+import com.example.SpringGateway.global.security.point.CustomAuthenticationEntryPoint;
 
 @Configuration
 @EnableWebFluxSecurity
@@ -54,6 +55,7 @@ public class SecurityConfig {
                         .frameOptions(frameOption -> frameOption.disable())
                 )
                 // 세션 사용하지 않으므로 STATELESS로 설정
+
                 .securityContextRepository(NoOpServerSecurityContextRepository.getInstance())
                 // exceptionHandler
                 .exceptionHandling(exceptions -> exceptions
@@ -67,7 +69,7 @@ public class SecurityConfig {
                         .pathMatchers(HttpMethod.OPTIONS).denyAll()
                         .anyExchange().authenticated()
                 )
-                // jwt-set-uri 통해 공개키 활용 -> JWT 완전 자동 검증
+                 //jwt-set-uri 통해 공개키 활용 -> JWT 완전 자동 검증
                 .oauth2ResourceServer(oauth2 -> oauth2
                         .jwt(Customizer.withDefaults())
                         .authenticationEntryPoint(customAuthenticationEntryPoint)

@@ -90,7 +90,12 @@ public class MatcherRequestManager {
             "/user/certification",
 
             // ✅ 토큰 테스트
-            "/user/token"
+            "/user/token",
+
+            // 채원 테스트
+            "/ms1/**",
+            "/ms2/**",
+            "/user/**",
     };
 
 }

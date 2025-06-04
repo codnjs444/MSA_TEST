@@ -50,6 +50,10 @@ dependencies {
 	// Spring Cloud Eureka
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 
+	// Redis
+	implementation 'org.springframework.data:spring-data-redis'
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis-reactive'
+
 	// JSON
 	implementation 'org.json:json:20240303'
 	implementation 'com.fasterxml.jackson.core:jackson-databind'

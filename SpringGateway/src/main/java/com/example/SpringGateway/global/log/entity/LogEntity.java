@@ -72,7 +72,7 @@ public class LogEntity {
 	@Comment("서버 구분 (gateway, backend 등)")
     private String serverType;
 	
-	@NotNull
+//	@NotNull
 	@Comment("로그 생성 시각")
     @CreatedDate
     @Column(updatable = false)
