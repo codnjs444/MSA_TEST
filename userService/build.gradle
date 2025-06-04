@@ -17,6 +17,10 @@ configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
 	}
+	all {
+		exclude group: 'ch.qos.logback', module: 'logback-classic'
+		exclude group: 'org.apache.logging.log4j', module: 'log4j-to-slf4j'
+	}
 }
 
 repositories {
@@ -28,17 +32,90 @@ ext {
 }
 
 dependencies {
+
+	// Spring Web
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	// Spring Configuration
+	implementation 'org.springframework.boot:spring-boot-configuration-processor'
+
+	// Spring Security
 	implementation 'org.springframework.boot:spring-boot-starter-security'
-	implementation 'org.springframework.cloud:spring-cloud-starter-config'
-	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
-	implementation 'org.springframework.boot:spring-boot-starter-actuator' //actuator 추가
-	implementation 'io.micrometer:micrometer-registry-prometheus'
+
+	// WebSocket
+	implementation 'org.springframework.boot:spring-boot-starter-websocket'
+
+	// Swagger
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.7.0'
+
+	// Validation
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+	// Devtools
+	implementation 'org.springframework.boot:spring-boot-devtools'
+
+	// lombok
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
+
+	// AOP
+	implementation 'org.springframework.boot:spring-boot-starter-aop'
+
+	// JWT
+	implementation 'com.auth0:java-jwt:4.4.0'
+
+	// JPA (JDBC를 함께 포함)
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	// Mybatis
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
+
+	// JSON
+	implementation 'org.json:json:20240303'
+	implementation 'com.google.code.gson:gson:2.11.0'
+	implementation 'net.minidev:json-smart:2.4.11' // 최신 버전 기준
+
+	// PostgreSQL
+	implementation 'org.postgresql:postgresql:42.7.2'
+
+	// Thymeleaf
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+	// Log
+	implementation 'org.springframework.boot:spring-boot-starter-log4j2'
+	implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.9.0'
+
+	// i18n (message multi language)
+	implementation 'net.rakugakibox.util:yaml-resource-bundle:1.1'
+
+	// Apache Commons
+	implementation 'org.apache.commons:commons-lang3:3.12.0'
+
+	// RandomString
+	implementation 'net.bytebuddy:byte-buddy:1.15.10'
+
+	// MQTT
+	implementation 'org.springframework.integration:spring-integration-mqtt:6.3.0'
+
+	// ModelMapper
+	implementation 'org.modelmapper:modelmapper:2.4.2'
+
+	// Spring tester
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
+
+	// 유레카 설정
+	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+	implementation 'org.springframework.boot:spring-boot-starter-actuator' //actuator 추가
+	implementation 'org.springframework.cloud:spring-cloud-starter-config'
+	implementation 'io.micrometer:micrometer-registry-prometheus'
+
+	// Redis
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+
 }
 
 dependencyManagement {

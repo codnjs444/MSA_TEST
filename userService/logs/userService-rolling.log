@@ -1,0 +1,68 @@
+[INFO ] 2025-06-04 18:04:28.218 [background-preinit][Version.java] Version - HV000001: Hibernate Validator 8.0.2.Final
+[INFO ] 2025-06-04 18:04:28.261 [restartedMain][StartupInfoLogger.java] UserServiceApplication - Starting UserServiceApplication using Java 21.0.5 with PID 30380 (C:\Users\user\git\02.개인 학습\MSA_TEST\MSA_TEST\userService\out\production\classes started by user in C:\Users\user\git\02.개인 학습\MSA_TEST\MSA_TEST\userService)
+[INFO ] 2025-06-04 18:04:28.267 [restartedMain][SpringApplication.java] UserServiceApplication - The following 1 profile is active: "dev"
+[INFO ] 2025-06-04 18:04:28.307 [restartedMain][DeferredLog.java] ConfigServerConfigDataLoader - Fetching config from server at : http://config-server:9000
+[INFO ] 2025-06-04 18:04:28.307 [restartedMain][DeferredLog.java] ConfigServerConfigDataLoader - Exception on Url - http://config-server:9000:org.springframework.web.client.ResourceAccessException: I/O error on GET request for "http://config-server:9000/userService/default": config-server. Will be trying the next url if available
+[WARN ] 2025-06-04 18:04:28.307 [restartedMain][DeferredLog.java] ConfigServerConfigDataLoader - Could not locate PropertySource ([ConfigServerConfigDataResource@70f9782 uris = array<String>['http://config-server:9000'], optional = true, profiles = 'default']): I/O error on GET request for "http://config-server:9000/userService/default": config-server
+[INFO ] 2025-06-04 18:04:28.308 [restartedMain][DeferredLog.java] ConfigServerConfigDataLoader - Fetching config from server at : http://config-server:9000
+[INFO ] 2025-06-04 18:04:28.308 [restartedMain][DeferredLog.java] ConfigServerConfigDataLoader - Exception on Url - http://config-server:9000:org.springframework.web.client.ResourceAccessException: I/O error on GET request for "http://config-server:9000/userService/dev": config-server. Will be trying the next url if available
+[WARN ] 2025-06-04 18:04:28.308 [restartedMain][DeferredLog.java] ConfigServerConfigDataLoader - Could not locate PropertySource ([ConfigServerConfigDataResource@7716989d uris = array<String>['http://config-server:9000'], optional = true, profiles = 'dev']): I/O error on GET request for "http://config-server:9000/userService/dev": config-server
+[INFO ] 2025-06-04 18:04:28.308 [restartedMain][DeferredLog.java] ConfigServerConfigDataLoader - Fetching config from server at : http://config-server:9000
+[INFO ] 2025-06-04 18:04:28.308 [restartedMain][DeferredLog.java] ConfigServerConfigDataLoader - Exception on Url - http://config-server:9000:org.springframework.web.client.ResourceAccessException: I/O error on GET request for "http://config-server:9000/userService/default": config-server. Will be trying the next url if available
+[WARN ] 2025-06-04 18:04:28.308 [restartedMain][DeferredLog.java] ConfigServerConfigDataLoader - Could not locate PropertySource ([ConfigServerConfigDataResource@7667dc70 uris = array<String>['http://config-server:9000'], optional = true, profiles = 'default']): I/O error on GET request for "http://config-server:9000/userService/default": config-server
+[INFO ] 2025-06-04 18:04:28.310 [restartedMain][DeferredLog.java] DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+[INFO ] 2025-06-04 18:04:28.310 [restartedMain][DeferredLog.java] DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+[INFO ] 2025-06-04 18:04:29.622 [restartedMain][RepositoryConfigurationDelegate.java] RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+[INFO ] 2025-06-04 18:04:29.624 [restartedMain][RepositoryConfigurationDelegate.java] RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[INFO ] 2025-06-04 18:04:29.726 [restartedMain][RepositoryConfigurationDelegate.java] RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 94 ms. Found 1 JPA repository interface.
+[INFO ] 2025-06-04 18:04:29.736 [restartedMain][RepositoryConfigurationDelegate.java] RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+[INFO ] 2025-06-04 18:04:29.737 [restartedMain][RepositoryConfigurationDelegate.java] RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[INFO ] 2025-06-04 18:04:29.750 [restartedMain][RepositoryConfigurationExtensionSupport.java] RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.userService.module.otp.repository.OtpRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+[INFO ] 2025-06-04 18:04:29.750 [restartedMain][RepositoryConfigurationDelegate.java] RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 6 ms. Found 0 Redis repository interfaces.
+[WARN ] 2025-06-04 18:04:29.999 [restartedMain][Logger.java] ClassPathMapperScanner - No MyBatis mapper was found in '[com.example.userService]' package. Please check your configuration.
+[INFO ] 2025-06-04 18:04:30.004 [restartedMain][LogAccessor.java] DefaultConfiguringBeanFactoryPostProcessor - No bean named 'errorChannel' has been explicitly defined. Therefore, a default PublishSubscribeChannel will be created.
+[INFO ] 2025-06-04 18:04:30.014 [restartedMain][LogAccessor.java] DefaultConfiguringBeanFactoryPostProcessor - No bean named 'integrationHeaderChannelRegistry' has been explicitly defined. Therefore, a default DefaultHeaderChannelRegistry will be created.
+[INFO ] 2025-06-04 18:04:30.120 [restartedMain][GenericScope.java] GenericScope - BeanFactory id=dbb78f43-0382-3252-b7a2-50a5527b04d8
+[WARN ] 2025-06-04 18:04:30.517 [restartedMain][AbstractApplicationContext.java] AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'messageSource' defined in class path resource [com/example/userService/global/message/MessageConfig.class]: Unexpected exception during bean creation
+[INFO ] 2025-06-04 18:04:30.533 [restartedMain][ConditionEvaluationReportLogger.java] ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+[ERROR] 2025-06-04 18:04:30.560 [restartedMain][SpringApplication.java] SpringApplication - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'messageSource' defined in class path resource [com/example/userService/global/message/MessageConfig.class]: Unexpected exception during bean creation
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:536) ~[spring-beans-6.2.3.jar:6.2.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.3.jar:6.2.3]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:346) ~[spring-beans-6.2.3.jar:6.2.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.3.jar:6.2.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:207) ~[spring-beans-6.2.3.jar:6.2.3]
+	at org.springframework.context.support.AbstractApplicationContext.initMessageSource(AbstractApplicationContext.java:819) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:615) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) [spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) [spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) [spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) [spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) [spring-boot-3.4.3.jar:3.4.3]
+	at com.example.userService.UserServiceApplication.main(UserServiceApplication.java:12) [classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) [spring-boot-devtools-3.4.3.jar:3.4.3]
+Caused by: org.springframework.util.PlaceholderResolutionException: Could not resolve placeholder 'spring.messages.basename' in value "${spring.messages.basename}"
+	at org.springframework.util.PlaceholderResolutionException.withValue(PlaceholderResolutionException.java:81) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.util.PlaceholderParser$ParsedValue.resolve(PlaceholderParser.java:423) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.util.PlaceholderParser.replacePlaceholders(PlaceholderParser.java:128) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.util.PropertyPlaceholderHelper.parseStringValue(PropertyPlaceholderHelper.java:118) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.util.PropertyPlaceholderHelper.replacePlaceholders(PropertyPlaceholderHelper.java:114) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.core.env.AbstractPropertyResolver.doResolvePlaceholders(AbstractPropertyResolver.java:255) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.core.env.AbstractPropertyResolver.resolveRequiredPlaceholders(AbstractPropertyResolver.java:226) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.context.support.PropertySourcesPlaceholderConfigurer.lambda$processProperties$0(PropertySourcesPlaceholderConfigurer.java:201) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveEmbeddedValue(AbstractBeanFactory.java:971) ~[spring-beans-6.2.3.jar:6.2.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1574) ~[spring-beans-6.2.3.jar:6.2.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1552) ~[spring-beans-6.2.3.jar:6.2.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:913) ~[spring-beans-6.2.3.jar:6.2.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-6.2.3.jar:6.2.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:546) ~[spring-beans-6.2.3.jar:6.2.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1361) ~[spring-beans-6.2.3.jar:6.2.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1191) ~[spring-beans-6.2.3.jar:6.2.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:563) ~[spring-beans-6.2.3.jar:6.2.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523) ~[spring-beans-6.2.3.jar:6.2.3]
+	... 16 more

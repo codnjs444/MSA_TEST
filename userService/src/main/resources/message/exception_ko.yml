@@ -1,0 +1,259 @@
+#test
+i18nTest:
+  code: "9999"
+  msg: "에러 테스트"
+tokenIssue:
+  code: "0000"
+  msg: "토큰이 정상 발급되었습니다"
+  
+#create
+createSuccess:
+  code: "0000"
+  msg: "등록에 성공하였습니다"
+createFail:
+  code: "2101"
+  msg: "등록에 실패하였습니다"
+createdSuccess:
+  code: "0000"
+  msg: "생성되였습니다"
+#read
+readSuccess:
+  code: "0000"
+  msg: "조회에 성공하였습니다"
+readFail:
+  code: "2102"
+  msg: "조회에 실패하였습니다"
+#update
+updateSuccess:
+  code: "0000"
+  msg: "변경에 성공하였습니다"
+updateFail:
+  code: "2103"
+  msg: "변경에 실패하였습니다"
+updateFailNotData:
+  code: "2103"
+  msg: "변경에 실패하였습니다 (데이터 없음)"
+#delete
+deleteSuccess:
+  code: "0000"
+  msg: "삭제에 성공하였습니다"
+deleteFail:
+  code: "2104"
+  msg: "삭제에 실패하였습니다"
+deleteFailNotData:
+  code: "2104"
+  msg: "삭제에 실패하였습니다 (데이터 없음)"
+#validation
+emailValidation:
+  code: "3004"
+  msg: "이메일 형식이 올바르지 않습니다"
+notFoundData:
+  code: "3005"
+  msg: "해당 데이터가 존재하지 않습니다"
+notFoundParameter:
+  code: "3006"
+  msg: "파라미터가 존재하지 않습니다"
+  
+#sign-up
+signupFail:
+  code: "3000"
+  msg: "회원가입에 실패하였습니다"
+duplicationId:
+  code: "3001"
+  msg: "이미 존재하는 아이디 입니다"
+duplicationEmail:
+  code: "3001"
+  msg: "이미 존재하는 이메일 입니다"
+passwordValidation:
+  code: "3002"
+  msg: "8자리 이상 20자 이하 입력해야 합니다 (영문,숫자,특수문자 포함)"
+passwordNotMatch:
+  code: "3003"
+  msg: "비밀번호가 일치하지 않습니다"
+userIdValidation:
+  code: "3005"
+  msg: "영어(대소문자),숫자 5자에서 15자 사이만 가능합니다"
+#user
+possiableId:
+  code: "0000"
+  msg: "가입 가능한 아이디 입니다"
+userNotFound:
+  code: "4000"
+  msg: "유저정보가 존재하지 않습니다"
+userEmailNotMatch:
+  code: "4001"
+  msg: "입력하신 아이디와 이메일 정보가 회원정보와 일치하지 않습니다."
+leaveSuccess:
+  code: "0000"
+  msg: "회원탈퇴가 완료되었습니다"
+leaveFail:
+  code: "4001"
+  msg: "회원탈퇴에 실패하였습니다"
+#otp
+checkRequired:
+  code: "5000"
+  msg: "필수 입력 값이 누락되었습니다"
+otpMailSendSuccess:
+  code: "0000"
+  msg: "인증번호 메일을 발송하였습니다"
+otpMailSendFail:
+  code: "5001"
+  msg: "인증번호 메일 발송에 실패하였습니다"
+otpSuccess:
+  code: "0000"
+  msg: "인증 성공 하였습니다"
+otpFail:
+  code: "5002"
+  msg: "인증에 실패하였습니다"
+duplicationRecommend:
+  code: "5003"
+  msg: "추천인 코드가 이미 존재합니다"
+secretkeyNotFound:
+  code: "5004"
+  msg: "존재하지 않는 인증키 입니다"
+#mail
+mailSendSuccess:
+  code: "0000"
+  msg: "메일을 발송하였습니다"
+#mail_exception
+eMailAuthentication:
+  code: "103001"
+  msg: "메일 서버 인증에 실패하였습니다"
+eMailParse:
+  code: "103002"
+  msg: "메일 파실 오류 발생"
+eMailPreparation:
+  code: "103003"
+  msg: "메일 서버 통신 오류 발생"
+eMailSend:
+  code: "103004"
+  msg: "메일 발송에 실패하였습니다"
+eMailMessaging:
+  code: "103005"
+  msg: "자바 메일 API 오류 발생"
+#io_exception
+eFileNotFound:
+  code: "104001"
+  msg: "파일을 찾을 수 없습니다"
+eEOF:
+  code: "104002"
+  msg: "파일을 읽을 수 없습니다"
+eInterruptedIO:
+  code: "104003"
+  msg: "입출력 작업 중 인터럽트 발생"
+eCharConversion:
+  code: "104004"
+  msg: "문자 변환 작업 중 문자 인코딩 또는 디코딩 오류"
+eUnsupportedEncoding:
+  code: "104005"
+  msg: "지원하지 않는 문자 인코딩 또는 디코딩 시도"
+eSyncFailed:
+  code: "104006"
+  msg: " 동기화 작업 중 오류 발생"
+eObjectStream:
+  code: "104007"
+  msg: "객체 직렬화 및 역직렬화 예외 발생"
+eZip:
+  code: "104008"
+  msg: "ZIP 파일 압축 또는 압축 해제 오류"
+eSocket:
+  code: "104009"
+  msg: "네트워크 소켓 통신 오류"
+eMalformedURL:
+  code: "104010"
+  msg: "URL 형식이 잘못되었음"
+eConnectError:
+  code: "104011"
+  msg: "URL 연결 실패"
+#exception
+eException:
+  code: "9999"
+  msg: "Exception"
+eIOException:
+  code: "9999"
+  msg: "IOException"
+eBadSqlGrammar:
+  code: "109500"
+  msg: "잘못된 SQL문"
+eInvaildResult:
+  code: "109501"
+  msg: "데이터베이스 집합 처리 오류"
+eDuplicateKey:
+  code: "109502"
+  msg: "데이터베이스 고유 키 제약 또는 고유 인덱스 위반"
+eTransientDataAccess:
+  code: "109503"
+  msg: "일시적인 데이터 액세스 오류"
+eNonTransientDataAccess:
+  code: "109504"
+  msg: "데이터 액세스 오류 (데이터를 복구할 수 없음)"
+eDataRetrievalFailure:
+  code: "109505"
+  msg: "데이터베이스 데이터를 검색하지 못함"
+eConcurrencyFailure:
+  code: "109506"
+  msg: "트랜잭션 병행 처리 오류"
+ePermissionDeniedDataAccess:
+  code: "109507"
+  msg: "데이터 액세스 권한 부족"
+eDataIntegrityViolation:
+  code: "109508"
+  msg: "데이터 무결성 위반"
+eDataAccessResourceFailure:
+  code: "109509"
+  msg: "데이터베이스에 연결할 수 없음"
+eCannotAcquireLock:
+  code: "109510"
+  msg: "데이터베이스 Lock 획득 실패"
+eDeadlockLoserDataAccess:
+  code: "109511"
+  msg: "트랙잭션 오류 (데드락)"
+eCannotSerializeTransaction:
+  code: "109512"
+  msg: "직렬화 가능한 트랜잭션 실패"
+eJsonSyntax:
+  code: "109513"
+  msg: "JSON 파싱 오류"
+eDataAccessFail:
+  code: "109514"
+  msg: "데이터 저장에 실패하였습니다. 관리자에 문의해주세요"
+eDataFormatFail:
+  code: "109515"
+  msg: "데이터 형식이 올바르지 않습니다"
+eDataParseFail:
+  code: "109519"
+  msg: "파싱할 수 없는 데이터입니다 (문법에러)"
+eTokenExpired:
+  code: "109516"
+  msg: "토큰 휴효 기간이 만료되었습니다"
+eJWTVerification:
+  code: "109517"
+  msg: "JWT 검증 오류"
+eIllegal:
+  code: "109518"
+  msg: "잘못된 인수(인수가 형식이나 범위를 벗어났습니다)"
+accessDenied:
+  code: "273380"
+  msg: "액세스가 거부되었습니다 (권한 없음)"
+unauthorized:
+  code: "273380"
+  msg: "액세스가 거부되었습니다 (인증서버 연결 실패)"
+#mqtt
+eMqttConnectFail:
+  code: "400000"
+  msg: "MQTT 연결에 실패했습니다"
+eMqttClientNotFound:
+  code: "400001"
+  msg: "MQTT 클라이언트 ID가 NULL이거나 찾을 수 없습니다"
+eMqttTopicNotFound:
+  code: "400002"
+  msg: "MQTT 토픽 정보를 찾을 수 없습니다"
+eMqttPublishFail:
+  code: "400004"
+  msg: "MQTT 발행에 실패했습니다"
+eMqttAdapterStartFail:
+  code: "400005"
+  msg: "어댑터 시작에 실패했습니다"
+eMqttAdapterStartInterrupted:
+  code: "400006"
+  msg: "재시도 대기 중 스레드가 인터럽트 되었습니다"
