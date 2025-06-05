@@ -3,6 +3,7 @@ package com.example.userService.module.user.service;
 import com.example.userService.global.exception.CCommonException;
 import com.example.userService.global.exception.CDuplicateIdException;
 import com.example.userService.global.exception.CValidationUserIdException;
+import com.example.userService.global.keycloack.util.KeycloakUtil;
 import com.example.userService.global.redis.util.RedisUtil;
 import com.example.userService.global.utils.RegexUtils;
 import com.example.userService.global.utils.SecurityCrypto;
